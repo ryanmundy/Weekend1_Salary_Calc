@@ -34,6 +34,13 @@ function addEmployee() {
     //push new employee to employee array
     employees.push(tempEmployee);
     //end push employee to array
+    //clear inputs
+    $('#firstNameInput').val('');
+    $('#lastNameInput').val('');
+    $('#idInput').val('');
+    $('#titleInput').val('');
+    $('#annualSalaryInput').val('');
+    //end clear inputs
 
 
 }//end add employee

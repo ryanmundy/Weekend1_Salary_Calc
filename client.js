@@ -12,15 +12,28 @@ class Employee {
 
 let employees = [];
 
-$(document).ready( readyNow );
+$(document).ready(readyNow);
 
-function readyNow(){
+function readyNow() {
     console.log('in jquery');
     $('#addEmployeeButton').on('click', addEmployee);
 }//end ready now
 
-function addEmployee(){
+function addEmployee() {
     console.log('in addEmployee');
-    
-    
+    //create new employee object
+    let tempEmployee = new Employee(
+        $('#firstNameInput').val(),
+        $('#lastNameInput').val(),
+        $('#idInput').val(),
+        $('#titleInput').val(),
+        $('#annualSalaryInput').val(),
+    );
+    console.log('added', tempEmployee);
+    //end create employee object
+    //push new employee to employee array
+    employees.push(tempEmployee);
+    //end push employee to array
+
+
 }//end add employee

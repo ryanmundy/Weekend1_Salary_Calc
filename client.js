@@ -11,6 +11,7 @@ class Employee {
 }//end Item class
 
 let employees = [];
+let monthlyCost = 0;
 
 $(document).ready(readyNow);
 
@@ -41,6 +42,14 @@ function addEmployee() {
     $('#titleInput').val('');
     $('#annualSalaryInput').val('');
     //end clear inputs
+    //loop through employees
+    for(let employee of employees){
+        console.log(employee);
+        
+    }//end for loop
+    //append employees to DOM
+    //calculate total cost ()
+    //display total cost on DOM (create new td for each employee and append to tr)
 
 
 }//end add employee

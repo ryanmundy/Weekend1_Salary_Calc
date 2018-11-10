@@ -18,7 +18,13 @@ $(document).ready(readyNow);
 function readyNow() {
     console.log('in jquery');
     $('#addEmployeeButton').on('click', addEmployee);
+    $('#deleteEmployeeButton').on('click', deleteEmployee);
 }//end ready now
+
+function deleteEmployee() {
+    console.log('in delete employee');
+    
+}//end delete employee
 
 function addEmployee() {
     //empty row

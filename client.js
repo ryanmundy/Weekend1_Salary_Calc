@@ -44,8 +44,18 @@ function addEmployee() {
     //end clear inputs
     //loop through employees
     for(let employee of employees){
-        console.log(employee);
-        
+        console.log(employee);    
+    //append employees to DOM
+        let firstNameData = $(`<td class="firstNameData">${employee.firstName}<td>`);
+        let lastNameData = $(`<td class="lastNameData">${employee.lastName}<td>`);
+        let idData = $(`<td class="idData">${employee.id}<td>`);
+        let titleData = $(`<td class="titleData">${employee.id}<td>`);
+        let annualSalaryData = $(`<td class="annualSalaryData">${employee.annualSalary}<td>`);
+        $('.firstNameData').append(employee.firstName);
+        $('.lastNameData').append(employee.lastName);
+        $('.idData').append(employee.id);
+        $('.titleData').append(employee.title);
+        $('.annualSalaryData').append(employee.annualSalary);
     }//end for loop
     //append employees to DOM
     //calculate total cost ()

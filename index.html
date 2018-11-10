@@ -30,24 +30,27 @@
 
     <!-- Table -->
     <h4>Employees</h4>
-    <div class="tableDiv">
-        <table class="employeeTable">
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Annual Salary</th>
+                <th scope="col" class="firstNameTable">First Name</th>
+                <th scope="col" class="lastNameTable">Last Name</th>
+                <th scope="col" class="idTable">ID</th>
+                <th scope="col" class="titleTable">Title</th>
+                <th scope="col" class="annualSalaryTable">Annual Salary</th>
             </tr>
-            <tr class="newEmployeeRow">
-                <td class="firstNameTable">John</td>
-                <td class="lastNameTable">Smith</td>
-                <td class="idTable">0000</td>
-                <td class="titleTable">The Awesome Guy</td>
-                <td class="annualSalaryClassTable">$0</td>
+        </thead>
+        <tbody>
+            <tr class="tableRowClass">
+                <td scope="row" class="firstNameData"></td>
+                <td class="lastNameData"></td>
+                <td class="idData"></td>
+                <td class="titleData"></td>
+                <td class="annualSalaryData"></td>
             </tr>
-        </table>
-    </div>
+        </tbody>
+    </table>
+
     <!-- End Table -->
 
     <!-- Total Monthly -->

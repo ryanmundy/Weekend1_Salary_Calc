@@ -18,17 +18,15 @@ $(document).ready(readyNow);
 function readyNow() {
     console.log('in jquery');
     $('#addEmployeeButton').on('click', addEmployee);
+    
 }//end ready now
 
 function addEmployee() {
-    console.log('in addEmployee');
     //empty row
-    $('.firstNameData').empty();
-    $('.lastNameData').empty();
-    $('.idData').empty();
-    $('.titleData').empty();
-    $('.annualSalaryData').empty();
+    $('.newRow').empty();
     //end empty row
+    console.log('in addEmployee');
+    
     //create new employee object
     let tempEmployee = new Employee(
         $('#firstNameInput').val(),
@@ -50,22 +48,38 @@ function addEmployee() {
     $('#annualSalaryInput').val('');
     //end clear inputs
     //loop through employees
+
     for(let employee of employees){
-        console.log(employee);    
+        console.log(employee);
+        
     //append employees to DOM
-        let firstNameData = $(`<td class="firstNameData">${employee.firstName}<td>`);
-        let lastNameData = $(`<td class="lastNameData">${employee.lastName}<td>`);
-        let idData = $(`<td class="idData">${employee.id}<td>`);
-        let titleData = $(`<td class="titleData">${employee.id}<td>`);
-        let annualSalaryData = $(`<td class="annualSalaryData">${employee.annualSalary}<td>`);
-        $('.firstNameData').append(employee.firstName);
-        $('.lastNameData').append(employee.lastName);
-        $('.idData').append(employee.id);
-        $('.titleData').append(employee.title);
-        $('.annualSalaryData').append(employee.annualSalary);
-    }//end for loop
-    //append employees to DOM
+            
+        $('.newRow').append(`<tr class="newEmployeeRow"></tr>`);
+
+        let firstNameData = $(`<td class= "firstNameData"></td>`);
+        $(firstNameData).append(employee.firstName);
+        $('.newEmployeeRow').append(firstNameData);
+
+        let lastNameData = $(`<td class= "lastNameData"></td>`);
+        $(lastNameData).append(employee.lastName);
+        $('.newEmployeeRow').append(lastNameData);
+
+        let idData = $(`<td class= "idData"></td>`);
+        $(idData).append(employee.id);
+        $('.newEmployeeRow').append(idData);
+
+        let titleData = $(`<td class= "titleData"></td>`);
+        $(titleData).append(employee.title);
+        $('.newEmployeeRow').append(titleData);
+
+        let annualSalaryData = $(`<td class= "annualSalaryData"></td>`);
+        $(annualSalaryData).append(employee.annualSalary);
+        $('.newEmployeeRow').append(annualSalaryData);
+        
+        
+    }    //end for loop
     //calculate total cost ()
+
     //display total cost on DOM (create new td for each employee and append to tr)
 
 

@@ -22,6 +22,13 @@ function readyNow() {
 
 function addEmployee() {
     console.log('in addEmployee');
+    //empty row
+    $('.firstNameData').empty();
+    $('.lastNameData').empty();
+    $('.idData').empty();
+    $('.titleData').empty();
+    $('.annualSalaryData').empty();
+    //end empty row
     //create new employee object
     let tempEmployee = new Employee(
         $('#firstNameInput').val(),

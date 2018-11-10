@@ -8,7 +8,7 @@ class Employee {
         this.title = title;
         this.annualSalary = annualSalary;
     }//end constructor
-}//end Item class
+}//end Employee class
 
 let employees = [];
 let monthlyCost = 0;
@@ -18,10 +18,16 @@ $(document).ready(readyNow);
 function readyNow() {
     console.log('in jquery');
     $('#addEmployeeButton').on('click', addEmployee);
-    $('#deleteEmployeeButton').on('click', deleteEmployee);
+    //$('.deleteButton').on('click', deleteClicked);
 }//end ready now
 
-function deleteEmployee(employeeToDelete) {
+function deleteClicked(employeeIdToDelete) {
+    console.log(employeeIdToDelete);
+    
+    
+}
+
+function deleteEmployee() {
     $('.newRow').empty();
     console.log('in delete employee');
     //clear inputs
@@ -92,13 +98,13 @@ function addEmployee() {
     $('#annualSalaryInput').val('');
     //end clear inputs
     //loop through employees
-
+    monthlyCost=0;
     for(let employee of employees){
         console.log(employee);
         
     //append employees to DOM
 
-    let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>${employee.annualSalary}</td></tr>`);
+        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>${employee.annualSalary}</td><td><button type="button" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
            $('.newRow').append(newEmployeeRow);
 
         // let firstNameData = $(`<td class= "firstNameData"></td>`);
@@ -131,6 +137,7 @@ function addEmployee() {
     let totalCost = $(`<h4 class="totalCost"></h4>`);
     $('.totalMonthlyDiv').append(totalCost);
     $(totalCost).append(`Total Monthly = $${monthlyCost}`);
+    //$('#totalMonthlyNumber').val('1000');
     if(monthlyCost>20000){
         $('.totalMonthlyDiv').css('background-color', 'red');
     }

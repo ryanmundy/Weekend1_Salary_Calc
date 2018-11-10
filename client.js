@@ -18,15 +18,15 @@ $(document).ready(readyNow);
 function readyNow() {
     console.log('in jquery');
     $('#addEmployeeButton').on('click', addEmployee);
-    
 }//end ready now
 
 function addEmployee() {
     //empty row
     $('.newRow').empty();
+    $('.totalMonthlyDiv').empty();
     //end empty row
     console.log('in addEmployee');
-    
+  
     //create new employee object
     let tempEmployee = new Employee(
         $('#firstNameInput').val(),
@@ -76,11 +76,17 @@ function addEmployee() {
         $(annualSalaryData).append(employee.annualSalary);
         $('.newEmployeeRow').append(annualSalaryData);
         
+         //calculate total cost
+        monthlyCost += parseInt(employee.annualSalary, 10);
         
+
     }    //end for loop
-    //calculate total cost ()
-
-    //display total cost on DOM (create new td for each employee and append to tr)
 
 
+    let totalCost = $(`<h4 class="totalCost"></h4>`);
+    $('.totalMonthlyDiv').append(totalCost);
+    $(totalCost).append(`Total Monthly = $${monthlyCost}`);
+    if(monthlyCost>20000){
+        $('.totalMonthlyDiv').css('background-color', 'red');
+    }
 }//end add employee

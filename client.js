@@ -29,6 +29,7 @@ function deleteClicked(employeeIdToDelete) {
         if(employee.id == employeeIdToDelete){
             employees.splice(employee,1);
             // employees.filter(employee, 1);
+            console.log(employee + ' removed');
             
         }//end if
         
@@ -40,12 +41,12 @@ function deleteClicked(employeeIdToDelete) {
         monthlyCost += parseInt(employee.annualSalary, 10);
     }//end for loop
     
-    let totalCost = $(`<h4 class="totalCost"></h4>`);
-    $('.totalMonthlyDiv').append(totalCost);
-    $(totalCost).append(`Total Monthly = $${monthlyCost}`);
-    if (monthlyCost > 20000) {
-        $('.totalMonthlyDiv').css('background-color', 'red');
-    }
+    // let totalCost = $(`<h4 class="totalCost"></h4>`);
+    // $('.totalMonthlyDiv').append(totalCost);
+    // $(totalCost).append(`Total Monthly = $${monthlyCost}`);
+    // if (monthlyCost > 20000) {
+    //     $('.totalMonthlyDiv').css('background-color', 'red');
+    // }
 
     
 }//end delete clicked
@@ -97,7 +98,7 @@ function addEmployee() {
 
     let totalCost = $(`<h4 class="totalCost"></h4>`);
     $('.totalMonthlyDiv').append(totalCost);
-    $(totalCost).append(`Total Monthly = $${monthlyCost}`);
+    $(totalCost).append(`Total Monthly = $${monthlyCost.toFixed(2)}`);
     if(monthlyCost>20000){
         $('.totalMonthlyDiv').css('background-color', 'red');
     }

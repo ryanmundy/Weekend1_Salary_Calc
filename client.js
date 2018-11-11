@@ -24,6 +24,13 @@ function readyNow() {
 function deleteClicked(employeeIdToDelete) {
     console.log(employeeIdToDelete);
     
+    for(employee of employees){
+        if(employee.id == employeeIdToDelete){
+            employees.splice(employee,1);
+        }//end if
+        console.log(employees);
+        
+    }//end for loop
     
 }
 

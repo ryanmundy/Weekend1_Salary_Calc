@@ -25,18 +25,28 @@ function deleteClicked(employeeIdToDelete) {
     monthlyCost = 0;
     $('.newRow').empty();
     $('.totalMonthlyDiv').empty();
+
+    let employeeIndex = 0;
+
     for (employee of employees) {
-        if (employee.id == employeeIdToDelete) {
-            employees.splice(employee, 1);
-            // employees.filter(employee, 1);
-            console.log(employee + ' removed');
-            
-        }//end if
+        console.log(employee);
         
+        if (employee.id == employeeIdToDelete) {
+            employees.splice(employeeIndex, 1);
+            console.log(employee.id + ' removed');
+
+        }//end if
+        employeeIndex++;
     }//end for loop
     
     for (employee of employees){
-        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>$${employee.annualSalary}</td><td><button type="button" class="btn btn-danger" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
+        let newEmployeeRow = 
+        $(`<tr><td>${employee.firstName}</td>
+        <td>${employee.lastName}</td>
+        <td>${employee.id}</td>
+        <td>${employee.title}</td>
+        <td>$${employee.annualSalary}</td>
+        <td><button type="button" class="btn btn-danger" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
         $('.newRow').append(newEmployeeRow);
         monthlyCost += (parseInt(employee.annualSalary, 10) / 12);
     }//end for loop

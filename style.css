@@ -1,0 +1,41 @@
+h1{
+    text-align: center;
+}
+
+.body{
+    background-color: lightgrey;
+}
+
+.inputDiv{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.buttonDiv{
+    position: relative;
+    left: 780px;
+}
+
+h4{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+#requiredFields{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+    margin-left: 40px;
+    color: red;
+}
+
+.table{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+    margin-left: 40px;
+}

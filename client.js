@@ -89,7 +89,7 @@ function addEmployee() {
         
     //append employees to DOM
 
-        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>$${employee.annualSalary}</td><td><button type="button" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
+        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>$${employee.annualSalary}</td><td><button type="button" class="btn btn-danger" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
            $('.newRow').append(newEmployeeRow);
        
         monthlyCost += (parseInt(employee.annualSalary, 10) / 12);

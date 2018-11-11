@@ -23,61 +23,38 @@ function readyNow() {
 
 function deleteClicked(employeeIdToDelete) {
     console.log(employeeIdToDelete);
-    
+    monthlyCost=0;
+    $('.newRow').empty();
     for(employee of employees){
         if(employee.id == employeeIdToDelete){
             employees.splice(employee,1);
+            // employees.filter(employee, 1);
+            
         }//end if
-        console.log(employees);
         
     }//end for loop
     
-}
-
-function deleteEmployee() {
-    $('.newRow').empty();
-    console.log('in delete employee');
-    //clear inputs
-    $('#firstNameInput').val('');
-    //end clear inputs
-    for(let employee of employees){
-        console.log(employee);
-        let employeeToDelete = $('#firstNameInput').val();
-        if(employeeToDelete === employee.firstName){
-        employees.splice(employee,1);
-        }
-        else{
-            console.log('employee not found');
-            
-        }
-        $('.newRow').append(`<tr class="newEmployeeRow"></tr>`);
-
-        let firstNameData = $(`<td class= "firstNameData"></td>`);
-        $(firstNameData).append(employee.firstName);
-        $('.newEmployeeRow').append(firstNameData);
-
-        let lastNameData = $(`<td class= "lastNameData"></td>`);
-        $(lastNameData).append(employee.lastName);
-        $('.newEmployeeRow').append(lastNameData);
-
-        let idData = $(`<td class= "idData"></td>`);
-        $(idData).append(employee.id);
-        $('.newEmployeeRow').append(idData);
-
-        let titleData = $(`<td class= "titleData"></td>`);
-        $(titleData).append(employee.title);
-        $('.newEmployeeRow').append(titleData);
-
-        let annualSalaryData = $(`<td class= "annualSalaryData"></td>`);
-        $(annualSalaryData).append(employee.annualSalary);
-        $('.newEmployeeRow').append(annualSalaryData);
-
-
+    for (employee of employees){
+        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>$${employee.annualSalary}</td><td><button type="button" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
+        $('.newRow').append(newEmployeeRow);
+        monthlyCost += parseInt(employee.annualSalary, 10);
     }//end for loop
     
-}//end delete employee
+    let totalCost = $(`<h4 class="totalCost"></h4>`);
+    $('.totalMonthlyDiv').append(totalCost);
+    $(totalCost).append(`Total Monthly = $${monthlyCost}`);
+    if (monthlyCost > 20000) {
+        $('.totalMonthlyDiv').css('background-color', 'red');
+    }
+
+    
+}//end delete clicked
 
 function addEmployee() {
+    if ($('#firstNameInput').val() == '' || $('#lastNameInput').val() == ''|| $('#idInput').val() == '' || $('#titleIput').val() == '' || $('#annualSalaryInput').val() == ''){
+        alert('Please complete all fields');
+    }//end if
+    else{
     //empty row
     $('.newRow').empty();
     $('.totalMonthlyDiv').empty();
@@ -111,41 +88,18 @@ function addEmployee() {
         
     //append employees to DOM
 
-        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>${employee.annualSalary}</td><td><button type="button" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
+        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>$${employee.annualSalary}</td><td><button type="button" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
            $('.newRow').append(newEmployeeRow);
-
-        // let firstNameData = $(`<td class= "firstNameData"></td>`);
-        // $(firstNameData).append(employee.firstName);
-        // $('.newRow').append(firstNameData);
-
-        // let lastNameData = $(`<td class= "lastNameData"></td>`);
-        // $(lastNameData).append(employee.lastName);
-        // $('.newRow').append(lastNameData);
-
-        // let idData = $(`<td class= "idData"></td>`);
-        // $(idData).append(employee.id);
-        // $('.newRow').append(idData);
-
-        // let titleData = $(`<td class= "titleData"></td>`);
-        // $(titleData).append(employee.title);
-        // $('.newRow').append(titleData);
-
-        // let annualSalaryData = $(`<td class= "annualSalaryData"></td>`);
-        // $(annualSalaryData).append(employee.annualSalary);
-        // $('.newRow').append(annualSalaryData);
-        
-         //calculate total cost
        
-        monthlyCost += parseInt(employee.annualSalary, 10);
+        monthlyCost += (parseInt(employee.annualSalary, 10) / 12);
         
-
     }    //end for loop
 
     let totalCost = $(`<h4 class="totalCost"></h4>`);
     $('.totalMonthlyDiv').append(totalCost);
     $(totalCost).append(`Total Monthly = $${monthlyCost}`);
-    //$('#totalMonthlyNumber').val('1000');
     if(monthlyCost>20000){
         $('.totalMonthlyDiv').css('background-color', 'red');
     }
+}//end else
 }//end add employee

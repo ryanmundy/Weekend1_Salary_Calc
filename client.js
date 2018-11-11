@@ -53,7 +53,7 @@ function deleteClicked(employeeIdToDelete) {
     
     let updatedCost = $(`<h4 class="totalCost"></h4>`);
     $('.totalMonthlyDiv').append(updatedCost);
-    $(updatedCost).append(`Updated Monthly Cost = $${monthlyCost.toFixed(2)}`);
+    $(updatedCost).append(`Monthly Cost = $${monthlyCost.toFixed(2)}`);
     if (monthlyCost > 20000) {
         $('.totalMonthlyDiv').css('background-color', 'red');
     }

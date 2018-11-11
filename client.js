@@ -119,4 +119,5 @@ function addEmployee() {
         $('.totalMonthlyDiv').css('background-color', 'red');
     }
 }//end else
+    $('#firstNameInput').focus();
 }//end add employee

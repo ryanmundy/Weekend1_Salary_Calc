@@ -18,16 +18,16 @@ $(document).ready(readyNow);
 function readyNow() {
     console.log('in jquery');
     $('#addEmployeeButton').on('click', addEmployee);
-    //$('.deleteButton').on('click', deleteClicked);
 }//end ready now
 
 function deleteClicked(employeeIdToDelete) {
     console.log(employeeIdToDelete);
-    monthlyCost=0;
+    monthlyCost = 0;
     $('.newRow').empty();
-    for(employee of employees){
-        if(employee.id == employeeIdToDelete){
-            employees.splice(employee,1);
+    $('.totalMonthlyDiv').empty();
+    for (employee of employees) {
+        if (employee.id == employeeIdToDelete) {
+            employees.splice(employee, 1);
             // employees.filter(employee, 1);
             console.log(employee + ' removed');
             
@@ -36,17 +36,17 @@ function deleteClicked(employeeIdToDelete) {
     }//end for loop
     
     for (employee of employees){
-        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>$${employee.annualSalary}</td><td><button type="button" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
+        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>$${employee.annualSalary}</td><td><button type="button" class="btn btn-danger" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
         $('.newRow').append(newEmployeeRow);
-        monthlyCost += parseInt(employee.annualSalary, 10);
+        monthlyCost += (parseInt(employee.annualSalary, 10) / 12);
     }//end for loop
     
-    // let totalCost = $(`<h4 class="totalCost"></h4>`);
-    // $('.totalMonthlyDiv').append(totalCost);
-    // $(totalCost).append(`Total Monthly = $${monthlyCost}`);
-    // if (monthlyCost > 20000) {
-    //     $('.totalMonthlyDiv').css('background-color', 'red');
-    // }
+    let updatedCost = $(`<h4 class="totalCost"></h4>`);
+    $('.totalMonthlyDiv').append(updatedCost);
+    $(updatedCost).append(`Updated Monthly Cost = $${monthlyCost.toFixed(2)}`);
+    if (monthlyCost > 20000) {
+        $('.totalMonthlyDiv').css('background-color', 'red');
+    }
 
     
 }//end delete clicked
@@ -89,7 +89,13 @@ function addEmployee() {
         
     //append employees to DOM
 
-        let newEmployeeRow = $(`<tr><td>${employee.firstName}</td><td>${employee.lastName}</td><td>${employee.id}</td><td>${employee.title}</td><td>$${employee.annualSalary}</td><td><button type="button" class="btn btn-danger" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
+        let newEmployeeRow = 
+        $(`<tr><td>${employee.firstName}</td>
+        <td>${employee.lastName}</td>
+        <td>${employee.id}</td>
+        <td>${employee.title}</td>
+        <td>$${employee.annualSalary}</td>
+        <td><button type="button" class="btn btn-danger" onClick="deleteClicked(${employee.id})" class="deleteButton">Delete</button></td></tr>`);
            $('.newRow').append(newEmployeeRow);
        
         monthlyCost += (parseInt(employee.annualSalary, 10) / 12);
@@ -98,7 +104,7 @@ function addEmployee() {
 
     let totalCost = $(`<h4 class="totalCost"></h4>`);
     $('.totalMonthlyDiv').append(totalCost);
-    $(totalCost).append(`Total Monthly = $${monthlyCost.toFixed(2)}`);
+    $(totalCost).append(`Monthly Cost = $${monthlyCost.toFixed(2)}`);
     if(monthlyCost>20000){
         $('.totalMonthlyDiv').css('background-color', 'red');
     }
